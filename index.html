@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
+<!-- saved from url=(0029)https://www.rglifespaces.com/ -->
+<html lang="en"><__hrp__ data-ext-id="eanggfilgoajaocelnaflolkadkeghjp" style="position: relative !important; z-index: 2147483647 !important;"><link href="chrome-extension://eanggfilgoajaocelnaflolkadkeghjp/nj.css" rel="stylesheet"></__hrp__><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>RG Lifespaces — Elegant Projects</title>
   <meta name="description" content="RG Lifespaces — residential project showcase and lead capture in Pune. Explore featured homes and upcoming launches.">
@@ -10,9 +10,9 @@
   <meta property="og:description" content="Luxury homes • Honest deals. Explore residential projects and upcoming launches in Pune.">
   <meta property="og:type" content="website">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23b8860b'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='26' font-weight='700' fill='white' text-anchor='middle'%3ERG%3C/text%3E%3C/svg%3E">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+  <link href="./RG Lifespaces_files/css2" rel="stylesheet">
 
   <style>
     :root {
@@ -315,6 +315,110 @@ footer {
       .modal-backdrop { padding: 8px; }
       .modal-right { padding: 18px; }
     }
+
+/* RG Lifespaces: property image lightbox */
+.property-image-lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  background: rgba(0, 0, 0, 0.94);
+  padding: 55px 20px 30px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  cursor: zoom-out;
+}
+
+.property-image-lightbox.is-open {
+  display: flex;
+}
+
+.property-image-lightbox img {
+  display: block;
+  max-width: 95%;
+  max-height: 84vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+  cursor: default;
+  animation: propertyImageAppear 0.2s ease;
+}
+
+.property-image-lightbox .property-image-close {
+  position: absolute;
+  top: 14px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 32px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.property-image-lightbox .property-image-close:hover {
+  background: var(--accent);
+}
+
+.property-image-caption {
+  color: #fff;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 12px;
+}
+
+.thumb {
+  cursor: zoom-in;
+}
+
+.modal-left .big {
+  cursor: zoom-in;
+}
+
+.thumbs img {
+  cursor: zoom-in;
+}
+
+@keyframes propertyImageAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 600px) {
+  .property-image-lightbox {
+    padding: 55px 10px 25px;
+  }
+
+  .property-image-lightbox img {
+    max-width: 100%;
+    max-height: 78vh;
+  }
+
+  .property-image-lightbox .property-image-close {
+    top: 8px;
+    right: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .property-image-lightbox img {
+    animation: none;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -333,15 +437,15 @@ footer {
       </button>
 
       <nav id="mainNav" aria-label="Main navigation">
-        <a href="#projects">Featured Projects</a>
-        <a href="#upcoming-projects">Upcoming Projects</a>
-        <a href="#testimonials">Testimonials</a>
-        <a href="#contact">Contact</a>
+        <a href="https://www.rglifespaces.com/#projects">Featured Projects</a>
+        <a href="https://www.rglifespaces.com/#upcoming-projects">Upcoming Projects</a>
+        <a href="https://www.rglifespaces.com/#testimonials">Testimonials</a>
+        <a href="https://www.rglifespaces.com/#contact">Contact</a>
       </nav>
 
       <div class="cta-top">
         <a class="btn" href="tel:+917774056745">Call</a>
-        <a class="btn ghost" href="#contact">Enquire</a>
+        <a class="btn ghost" href="https://www.rglifespaces.com/#contact">Enquire</a>
       </div>
     </header>
 
@@ -351,8 +455,8 @@ footer {
           <h2>Crafting elegant living spaces for families who value design and trust.</h2>
           <p>Explore selected residential projects, compare options, and request a site visit with RG Lifespaces.</p>
           <div class="hero-actions">
-            <a class="btn gold" href="#projects">View Featured Projects</a>
-            <a class="btn ghost" href="#upcoming-projects">Explore Upcoming Launches</a>
+            <a class="btn gold" href="https://www.rglifespaces.com/#projects">View Featured Projects</a>
+            <a class="btn ghost" href="https://www.rglifespaces.com/#upcoming-projects">Explore Upcoming Launches</a>
           </div>
         </div>
 
@@ -360,8 +464,8 @@ footer {
           <h3>Request a Callback</h3>
           <div class="small">Share your details and our team will contact you.</div>
           <form id="hero-contact" class="form-stack">
-            <input class="field" name="name" type="text" placeholder="Your name" autocomplete="name" required>
-            <input class="field" name="phone" type="tel" placeholder="Phone number" autocomplete="tel" inputmode="tel" pattern="[0-9+\-\s()]{8,20}" required>
+            <input class="field" name="name" type="text" placeholder="Your name" autocomplete="name" required="">
+            <input class="field" name="phone" type="tel" placeholder="Phone number" autocomplete="tel" inputmode="tel" pattern="[0-9+\-\s()]{8,20}" required="">
             <input type="hidden" name="lead_source" value="Website quick contact">
             <button class="btn gold" type="submit">Request Call</button>
             <div id="hero-msg" class="form-status" role="status" aria-live="polite"></div>
@@ -374,14 +478,14 @@ footer {
     <section id="projects">
       <h2 class="section-title">Featured Projects</h2>
       <p class="lead">Explore selected residential projects and request details, brochures, or a site visit.</p>
-      <div class="grid" id="projectGrid"></div>
+      <div class="grid" id="projectGrid"><article class="proj"><div class="thumb" role="img" aria-label="Mantra Meridian " style="background-image: url(&quot;./assets/mrdn1.jpg&quot;);"></div><div class="pbody"><div class="meta"><div class="title">Mantra Meridian </div><span class="tag">Ongoing</span></div><div class="small" style="margin-top: 5px;">Balewadi Riverside Pune</div><div class="desc">Residential apartments with landscaped spaces and lifestyle amenities. Confirm current configurations and availability with the developer.</div><div class="possession-line">Possession: 31st March 2031</div><div class="pfoot"><button class="btn" type="button">View Details</button><button class="btn ghost" type="button">Register Interest</button></div></div></article><article class="proj"><div class="thumb" role="img" aria-label="VJ Palladio Presidential Suites" style="background-image: url(&quot;./assets/pps1.jpg&quot;);"></div><div class="pbody"><div class="meta"><div class="title">VJ Palladio Presidential Suites</div><span class="tag">Ongoing</span></div><div class="small" style="margin-top: 5px;">Balewadi, Pune</div><div class="desc">Residential homes in a connected Pune growth corridor. Contact us for verified configurations and availability.</div><div class="possession-line">Possession: Confirm with developer</div><div class="pfoot"><button class="btn" type="button">View Details</button><button class="btn ghost" type="button">Register Interest</button></div></div></article><article class="proj"><div class="thumb" role="img" aria-label="Rohan Ekam" style="background-image: url(&quot;./assets/re1.jpg&quot;);"></div><div class="pbody"><div class="meta"><div class="title">Rohan Ekam</div><span class="tag">Ongoing</span></div><div class="small" style="margin-top: 5px;">Balewadi, Pune</div><div class="desc">Explore residential options and request current project information from RG Lifespaces.</div><div class="possession-line">Possession: Confirm with developer</div><div class="pfoot"><button class="btn" type="button">View Details</button><button class="btn ghost" type="button">Register Interest</button></div></div></article><article class="proj"><div class="thumb" role="img" aria-label="Twilight By Majestique" style="background-image: url(&quot;./assets/twi1.jpg&quot;);"></div><div class="pbody"><div class="meta"><div class="title">Twilight By Majestique</div><span class="tag">Ongoing</span></div><div class="small" style="margin-top: 5px;">Balewadi, Pune</div><div class="desc">Ask us to confirm phase status, current availability, and official project details.</div><div class="possession-line">Possession: 31/03/2029 As Per RERA</div><div class="pfoot"><button class="btn" type="button">View Details</button><button class="btn ghost" type="button">Register Interest</button></div></div></article><article class="proj"><div class="thumb" role="img" aria-label="VJ LaViento" style="background-image: url(&quot;./assets/viento1.jpg&quot;);"></div><div class="pbody"><div class="meta"><div class="title">VJ LaViento</div><span class="tag">Check Status</span></div><div class="small" style="margin-top: 5px;">Sus, Pune</div><div class="desc">Contact us for current inventory, project status, specifications, and site visit details.</div><div class="possession-line">Possession: Confirm with developer</div><div class="pfoot"><button class="btn" type="button">View Details</button><button class="btn ghost" type="button">Register Interest</button></div></div></article><article class="proj"><div class="thumb" role="img" aria-label="Arion By Mont Vert" style="background-image: url(&quot;./assets/arion1.jpg&quot;);"></div><div class="pbody"><div class="meta"><div class="title">Arion By Mont Vert</div><span class="tag">Check Status</span></div><div class="small" style="margin-top: 5px;">Baner, Pune</div><div class="desc">Ask us to confirm phase status, current availability, and official project details.</div><div class="possession-line">Possession: Confirm with developer</div><div class="pfoot"><button class="btn" type="button">View Details</button><button class="btn ghost" type="button">Register Interest</button></div></div></article><article class="proj"><div class="thumb" role="img" aria-label="VTP Verv" style="background-image: url(&quot;./assets/verv1.jpg&quot;);"></div><div class="pbody"><div class="meta"><div class="title">VTP Verv</div><span class="tag">Check Status</span></div><div class="small" style="margin-top: 5px;">Baner, Pune</div><div class="desc">Contact RG Lifespaces for confirmed project status, configurations, and current pricing.</div><div class="possession-line">Possession: Confirm with developer</div><div class="pfoot"><button class="btn" type="button">View Details</button><button class="btn ghost" type="button">Register Interest</button></div></div></article><article class="proj"><div class="thumb" role="img" aria-label="VTP Cielo" style="background-image: url(&quot;./assets/cielo1.jpg&quot;);"></div><div class="pbody"><div class="meta"><div class="title">VTP Cielo</div><span class="tag">Ongoing</span></div><div class="small" style="margin-top: 5px;">Bawdhan, Pune</div><div class="desc">Residential options in the Hinjawadi growth corridor. Ask for current availability, pricing, and specifications.</div><div class="possession-line">Possession: Confirm with developer</div><div class="pfoot"><button class="btn" type="button">View Details</button><button class="btn ghost" type="button">Register Interest</button></div></div></article></div>
     </section>
 
     <!-- UPCOMING PROJECTS: Add new launch entries to UPCOMING_PROJECTS in the script below. -->
     <section id="upcoming-projects">
       <h2 class="section-title">Upcoming Projects</h2>
       <p class="lead">Be among the first to hear about upcoming launches, new inventory, floor plans, and launch updates.</p>
-      <div class="grid" id="upcomingProjectGrid"></div>
+      <div class="grid" id="upcomingProjectGrid"><article class="proj"><div class="thumb" role="img" aria-label="Vibrance By VTP" style="background-image: url(&quot;./assets/vibrance.jpg&quot;);"></div><div class="pbody"><div class="meta"><div class="title">Vibrance By VTP</div><span class="tag">Coming Soon</span></div><div class="small" style="margin-top: 5px;">Baner-Sus, Pune</div><div class="desc">Register your interest to receive verified launch updates, floor plans, pricing, and site-visit information when available.</div><div class="possession-line">Possession: To Be Announced</div><div class="pfoot"><button class="btn" type="button">View Details</button><button class="btn ghost" type="button">Register Interest</button></div></div></article></div>
       <div class="section-note">Interested in an upcoming launch? Select <strong>Register Interest</strong> on a project card. Use verified developer details and approved launch information before publishing.</div>
     </section>
 
@@ -412,8 +516,8 @@ footer {
         <div class="contact-card">
           <form id="contactForm" class="form-stack">
             <div class="form-row">
-              <input class="field" type="text" name="name" placeholder="Your name" autocomplete="name" required>
-              <input class="field" type="tel" name="phone" placeholder="Phone number" autocomplete="tel" inputmode="tel" pattern="[0-9+\-\s()]{8,20}" required>
+              <input class="field" type="text" name="name" placeholder="Your name" autocomplete="name" required="">
+              <input class="field" type="tel" name="phone" placeholder="Phone number" autocomplete="tel" inputmode="tel" pattern="[0-9+\-\s()]{8,20}" required="">
             </div>
             <input class="field" type="email" name="email" placeholder="Email address (optional)" autocomplete="email">
             <textarea class="field" name="message" placeholder="Which project are you interested in? (optional)" rows="5"></textarea>
@@ -429,8 +533,7 @@ footer {
         <div class="contact-card">
           <h3 class="office-title">RG Lifespaces</h3>
           <div class="small" style="margin-top:8px">Pune, Maharashtra</div>
-          <iframe class="map-frame" title="Map showing Pune" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d369599.6734193113!2d73.69039115471408!3d18.44286613253989!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf2e67461101%3A0x828d43bf9d9ee343!2sPune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1792055051619!5m2!1sen!2sin"
-  loading=lazy" allowfullscreen></iframe>
+          <iframe class="map-frame" title="Map showing Pune" src="./RG Lifespaces_files/embed.html" loading="lazy&quot;" allowfullscreen=""></iframe>
           <div style="margin-top:8px">
             <a class="small" href="https://maps.app.goo.gl/3DYFZUUpaKvroeYN9" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-weight:700;text-decoration:none">Open location in Google Maps →</a>
           </div>
@@ -456,58 +559,30 @@ footer {
         MahaRERA Agent Registration No.:
         <strong>A011262401033</strong>
         <span aria-hidden="true"> · </span>
-        <a
-          href="https://maharera.maharashtra.gov.in/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >Verify on MahaRERA ↗</a>
+        <a href="https://maharera.maharashtra.gov.in/" target="_blank" rel="noopener noreferrer">Verify on MahaRERA ↗</a>
       </div>
     </div>
 
     <div class="footer-social" aria-label="Social media links">
       <div class="footer-social-label">Follow RG Lifespaces</div>
 
-      <a
-        class="social-link facebook"
-        href="https://www.facebook.com/rglifespaces.in"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="RG Lifespaces on Facebook"
-        title="Facebook"
-      >
+      <a class="social-link facebook" href="https://www.facebook.com/rglifespaces.in" target="_blank" rel="noopener noreferrer" aria-label="RG Lifespaces on Facebook" title="Facebook">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M13.5 21v-8.2h2.8l.42-3.2H13.5V7.56c0-.93.26-1.56 1.6-1.56h1.72V3.14A22.4 22.4 0 0 0 14.31 3c-2.49 0-4.19 1.52-4.19 4.31V9.6H7.3v3.2h2.82V21h3.38Z"/>
+          <path d="M13.5 21v-8.2h2.8l.42-3.2H13.5V7.56c0-.93.26-1.56 1.6-1.56h1.72V3.14A22.4 22.4 0 0 0 14.31 3c-2.49 0-4.19 1.52-4.19 4.31V9.6H7.3v3.2h2.82V21h3.38Z"></path>
         </svg>
       </a>
 
-      <a
-        class="social-link instagram"
-        href="https://www.instagram.com/rglifespacesofficial"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="RG Lifespaces on Instagram"
-        title="Instagram"
-      >
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-          aria-hidden="true">
-          <rect x="3" y="3" width="18" height="18" rx="5"/>
-          <circle cx="12" cy="12" r="4"/>
-          <circle cx="17.5" cy="6.5" r="1"
-            fill="currentColor" stroke="none"/>
+      <a class="social-link instagram" href="https://www.instagram.com/rglifespacesofficial" target="_blank" rel="noopener noreferrer" aria-label="RG Lifespaces on Instagram" title="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+          <circle cx="12" cy="12" r="4"></circle>
+          <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle>
         </svg>
       </a>
 
-      <a
-        class="social-link youtube"
-        href="https://www.youtube.com/@RGLifespaces1"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="RG Lifespaces on YouTube"
-        title="YouTube"
-      >
+      <a class="social-link youtube" href="https://www.youtube.com/@RGLifespaces1" target="_blank" rel="noopener noreferrer" aria-label="RG Lifespaces on YouTube" title="YouTube">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.55 3.6 12 3.6 12 3.6s-7.55 0-9.4.5A3 3 0 0 0 .5 6.2 31.2 31.2 0 0 0 0 12a31.2 31.2 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.85.5 9.4.5 9.4.5s7.55 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.2 31.2 0 0 0 24 12a31.2 31.2 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"/>
+          <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.55 3.6 12 3.6 12 3.6s-7.55 0-9.4.5A3 3 0 0 0 .5 6.2 31.2 31.2 0 0 0 0 12a31.2 31.2 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.85.5 9.4.5 9.4.5s7.55 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.2 31.2 0 0 0 24 12a31.2 31.2 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"></path>
         </svg>
       </a>
     </div>
@@ -515,15 +590,36 @@ footer {
   </div>
 
   <div class="footer-bottom">
-    © <span id="year"></span> RG Lifespaces. All rights reserved.
+    © <span id="year">2026</span> RG Lifespaces. All rights reserved.
   </div>
 </footer>
 
   </div>
 
   <a class="wa-float" href="https://wa.me/917774056745" target="_blank" rel="noopener noreferrer" aria-label="Chat with RG Lifespaces on WhatsApp">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3.1.82.83-3-.2-.32A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.24-.12-1.44-.7-1.66-.79-.22-.08-.39-.12-.55.12-.16.24-.63.79-.78.95-.14.16-.28.18-.53.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.5.11-.1.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.33-.76-1.82-.2-.48-.4-.42-.55-.42h-.47c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28z"/></svg>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3.1.82.83-3-.2-.32A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.24-.12-1.44-.7-1.66-.79-.22-.08-.39-.12-.55.12-.16.24-.63.79-.78.95-.14.16-.28.18-.53.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.5.11-.1.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.33-.76-1.82-.2-.48-.4-.42-.55-.42h-.47c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28z"></path></svg>
   </a>
+
+
+<!-- Property image lightbox -->
+<div id="propertyImageLightbox"
+     class="property-image-lightbox"
+     role="dialog"
+     aria-modal="true"
+     aria-label="Enlarged property image"
+     aria-hidden="true">
+
+  <button type="button"
+          class="property-image-close"
+          aria-label="Close enlarged image">&times;</button>
+
+  <img id="propertyImageLightboxDisplay"
+       src=""
+       alt="Enlarged property image">
+
+  <div id="propertyImageCaption"
+       class="property-image-caption"></div>
+</div>
 
   <div id="modalRoot" aria-hidden="true"></div>
 
@@ -713,13 +809,36 @@ footer {
       projects.forEach(project => {
         const card = $el("article", "proj");
 
-        const thumb = $el("div", "thumb");
-        thumb.setAttribute("role", "img");
-        thumb.setAttribute("aria-label", project.title);
-        if (project.images && project.images[0]) {
-          thumb.style.backgroundImage = `url("${project.images[0]}")`;
-        }
-        card.appendChild(thumb);
+
+const thumb = $el("div", "thumb");
+thumb.setAttribute("role", "button");
+thumb.setAttribute("tabindex", "0");
+thumb.setAttribute(
+  "aria-label",
+  `Enlarge property image: ${project.title}`
+);
+
+if (project.images && project.images[0]) {
+  thumb.style.backgroundImage = `url("${project.images[0]}")`;
+  thumb.addEventListener("click", () => {
+    openPropertyImage(
+      project.images[0],
+      `${project.title} — ${project.location}`
+    );
+  });
+
+  thumb.addEventListener("keydown", event => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openPropertyImage(
+        project.images[0],
+        `${project.title} — ${project.location}`
+      );
+    }
+  });
+}
+
+card.appendChild(thumb);
 
         const body = $el("div", "pbody");
         const meta = $el("div", "meta");
@@ -809,6 +928,83 @@ footer {
         if (submitButtons) submitButtons.forEach(button => { button.disabled = false; });
       }
     }
+
+/* RG Lifespaces: property image lightbox */
+const propertyImageLightbox =
+  document.getElementById("propertyImageLightbox");
+
+const propertyImageDisplay =
+  document.getElementById("propertyImageLightboxDisplay");
+
+const propertyImageCaption =
+  document.getElementById("propertyImageCaption");
+
+const propertyImageClose =
+  propertyImageLightbox.querySelector(".property-image-close");
+
+let propertyImagePreviousFocus = null;
+
+function openPropertyImage(imageUrl, imageAlt = "Property image") {
+  if (!imageUrl) return;
+
+  propertyImagePreviousFocus = document.activeElement;
+
+  propertyImageDisplay.src = imageUrl;
+  propertyImageDisplay.alt = imageAlt;
+  propertyImageCaption.textContent = imageAlt;
+
+  propertyImageLightbox.classList.add("is-open");
+  propertyImageLightbox.setAttribute("aria-hidden", "false");
+
+  document.body.style.overflow = "hidden";
+  propertyImageClose.focus();
+}
+
+function closePropertyImage() {
+  if (!propertyImageLightbox.classList.contains("is-open")) return;
+
+  propertyImageLightbox.classList.remove("is-open");
+  propertyImageLightbox.setAttribute("aria-hidden", "true");
+
+  propertyImageDisplay.removeAttribute("src");
+  propertyImageCaption.textContent = "";
+
+  document.body.style.overflow = "";
+
+  if (
+    propertyImagePreviousFocus &&
+    typeof propertyImagePreviousFocus.focus === "function"
+  ) {
+    propertyImagePreviousFocus.focus();
+  }
+}
+
+// Close when clicking the dark background or close button.
+propertyImageLightbox.addEventListener("click", function (event) {
+  if (
+    event.target === propertyImageLightbox ||
+    event.target === propertyImageClose
+  ) {
+    closePropertyImage();
+  }
+});
+
+// Escape closes the image without closing the project-details modal.
+document.addEventListener("keydown", function (event) {
+  if (
+    event.key === "Escape" &&
+    propertyImageLightbox.classList.contains("is-open")
+  ) {
+    event.stopImmediatePropagation();
+    closePropertyImage();
+  }
+});
+
+// Prevent clicks on the enlarged photo from closing the overlay.
+propertyImageDisplay.addEventListener("click", function (event) {
+  event.stopPropagation();
+});
+
 
     const modalRoot = document.getElementById("modalRoot");
 
@@ -934,13 +1130,38 @@ footer {
         const close = makeCloseButton();
 
         const left = $el("div", "modal-left");
-        const big = $el("div", "big");
-        big.setAttribute("role", "img");
-        big.setAttribute("aria-label", project.title);
-        if (project.images && project.images[0]) {
-          big.style.backgroundImage = `url("${project.images[0]}")`;
-        }
-        left.appendChild(big);
+       
+const big = $el("div", "big");
+big.setAttribute("role", "button");
+big.setAttribute("tabindex", "0");
+big.setAttribute(
+  "aria-label",
+  `Enlarge property image: ${project.title}`
+);
+
+if (project.images && project.images[0]) {
+  big.style.backgroundImage = `url("${project.images[0]}")`;
+  big.dataset.imageSrc = project.images[0];
+}
+
+function enlargeCurrentProjectImage() {
+  openPropertyImage(
+    big.dataset.imageSrc,
+    `${project.title} — ${project.location}`
+  );
+}
+
+big.addEventListener("click", enlargeCurrentProjectImage);
+
+big.addEventListener("keydown", event => {
+  if (event.key === "Enter" || event.key === " ") {
+    event.preventDefault();
+    enlargeCurrentProjectImage();
+  }
+});
+
+left.appendChild(big);
+
 
         const thumbs = $el("div", "thumbs");
         (project.images || []).forEach((src, index) => {
@@ -948,11 +1169,25 @@ footer {
           image.src = src;
           image.alt = `${project.title} image ${index + 1}`;
           image.loading = "lazy";
-          image.addEventListener("click", () => {
-            big.style.backgroundImage = `url("${src}")`;
-            thumbs.querySelectorAll("img").forEach(item => item.classList.remove("active"));
-            image.classList.add("active");
-          });
+         
+image.addEventListener("click", () => {
+  // Update the selected image in the existing project gallery.
+  big.style.backgroundImage = `url("${src}")`;
+  big.dataset.imageSrc = src;
+
+  thumbs.querySelectorAll("img").forEach(item => {
+    item.classList.remove("active");
+  });
+
+  image.classList.add("active");
+
+  // Open the selected photo in the enlarged lightbox.
+  openPropertyImage(
+    src,
+    `${project.title} — Image ${index + 1}`
+  );
+});
+
           if (index === 0) image.classList.add("active");
           thumbs.appendChild(image);
         });
@@ -1083,5 +1318,6 @@ footer {
     renderProjects(PROJECTS, "projectGrid");
     renderProjects(UPCOMING_PROJECTS, "upcomingProjectGrid");
   </script>
-</body>
-</html>
+
+
+</body></html>
