@@ -943,10 +943,10 @@ card.appendChild(thumb);
         viewBtn.textContent = "View Details";
         viewBtn.addEventListener("click", () => openProjectModal(project.id));
 
-        const Get QuoteBtn = $el("button", "btn ghost");
-        Get QuoteBtn.type = "button";
-        Get QuoteBtn.textContent = "Get Quote Interest";
-        Get QuoteBtn.addEventListener("click", () => openGet QuoteModal(project.id));
+        const QuoteBtn = $el("button", "btn ghost");
+        QuoteBtn.type = "button";
+        QuoteBtn.textContent = "Get Quote";
+        QuoteBtn.addEventListener("click", () => openGet QuoteModal(project.id));
 
         foot.append(viewBtn, Get QuoteBtn);
 
