@@ -864,6 +864,16 @@ The part I’m most grateful for is the paperwork. We’re first-time buyers and
     const LEADS_ENDPOINT = "https://formsubmit.co/ajax/rglifespaces@gmail.com";
     const allProjects = () => [...PROJECTS, ...UPCOMING_PROJECTS];
 
+    // Send the same meaningful conversion events to GA4 and Meta Pixel.
+    function trackMarketingEvent(eventName, parameters = {}, metaEventName = null) {
+      if (typeof window.gtag === "function") {
+        window.gtag("event", eventName, parameters);
+      }
+      if (typeof window.fbq === "function" && metaEventName) {
+        window.fbq("track", metaEventName, parameters);
+      }
+    }
+
     function $el(tag, cls) {
       const element = document.createElement(tag);
       if (cls) element.className = cls;
@@ -952,12 +962,11 @@ card.appendChild(thumb);
         foot.append(viewBtn, QuoteBtn);
 
         if (project.brochure) {
-          const brochureLink = $el("a", "btn ghost");
-          brochureLink.textContent = "Brochure";
-          brochureLink.href = project.brochure;
-          brochureLink.target = "_blank";
-          brochureLink.rel = "noopener noreferrer";
-          foot.appendChild(brochureLink);
+          const brochureButton = $el("button", "btn ghost");
+          brochureButton.type = "button";
+          brochureButton.textContent = "Get Brochure";
+          brochureButton.addEventListener("click", () => openBrochureRequestModal(project.id));
+          foot.appendChild(brochureButton);
         }
 
         body.append(meta, location, desc, possession, foot);
@@ -997,9 +1006,10 @@ card.appendChild(thumb);
         }
 
         // Record a Meta conversion only after the CRM has safely saved the lead.
-        if (typeof window.fbq === "function") {
-          window.fbq("track", "Lead");
-        }
+        trackMarketingEvent("generate_lead", {
+          lead_source: payload.lead_source || payload.source || "Website",
+          project: payload.project || ""
+        }, "Lead");
 
         // CRM saved successfully; send the existing email notification as well.
         if (messageElement) messageElement.textContent = "Lead saved. Sending email notification…";
@@ -1165,7 +1175,7 @@ propertyImageDisplay?.addEventListener("click", function (event) {
       return close;
     }
 
-    function makeEnquiryForm(project, formId, messageId, successText) {
+    function makeEnquiryForm(project, formId, messageId, successText, onSuccess = null, leadSource = "Project enquiry") {
       const form = $el("form", "form-stack");
       form.id = formId;
 
@@ -1204,7 +1214,7 @@ propertyImageDisplay?.addEventListener("click", function (event) {
       const hiddenSource = $el("input");
       hiddenSource.type = "hidden";
       hiddenSource.name = "lead_source";
-      hiddenSource.value = "Project enquiry";
+      hiddenSource.value = leadSource;
 
       const actions = $el("div", "modal-actions");
       const submit = $el("button", "btn gold");
@@ -1232,7 +1242,11 @@ propertyImageDisplay?.addEventListener("click", function (event) {
         const success = await sendLead(payload, status, successText);
         if (success) {
           form.reset();
-          window.setTimeout(closeModal, 1400);
+          if (typeof onSuccess === "function") {
+            onSuccess();
+          } else {
+            window.setTimeout(closeModal, 1400);
+          }
         }
       });
       return form;
@@ -1241,6 +1255,12 @@ propertyImageDisplay?.addEventListener("click", function (event) {
     function openProjectModal(id) {
       const project = findProject(id);
       if (!project) return;
+
+      trackMarketingEvent("view_item", {
+        item_id: String(project.id),
+        item_name: project.title,
+        item_location: project.location
+      }, "ViewContent");
 
       showModal(() => {
         const fragment = document.createDocumentFragment();
@@ -1334,11 +1354,10 @@ image.addEventListener("click", () => {
 
         const actions = $el("div", "modal-actions");
         if (project.brochure) {
-          const brochure = $el("a", "btn");
-          brochure.href = project.brochure;
-          brochure.target = "_blank";
-          brochure.rel = "noopener noreferrer";
-          brochure.textContent = "View Brochure";
+          const brochure = $el("button", "btn");
+          brochure.type = "button";
+          brochure.textContent = "Get Brochure";
+          brochure.addEventListener("click", () => openBrochureRequestModal(project.id));
           actions.appendChild(brochure);
         }
         const getQuoteBtn = $el("button", "btn ghost");
@@ -1354,6 +1373,43 @@ image.addEventListener("click", () => {
 
         fragment.append(close, left, right);
         return fragment;
+      });
+    }
+
+    function openBrochureRequestModal(id) {
+      const project = findProject(id);
+      if (!project || !project.brochure) return;
+
+      trackMarketingEvent("brochure_request_start", {
+        item_id: String(project.id),
+        item_name: project.title
+      });
+
+      showModal(() => {
+        const content = document.createElement("div");
+        content.style.cssText = "padding:24px;width:100%;overflow:auto;";
+        const close = makeCloseButton();
+        const heading = $el("h3");
+        heading.style.cssText = "font-family:'Playfair Display',serif;margin:0 40px 6px 0;font-size:25px;";
+        heading.textContent = "Get the Project Brochure";
+        const intro = $el("p", "small");
+        intro.textContent = "Enter your contact details. Once your enquiry is saved, the brochure will open.";
+        content.append(close, heading, intro);
+        content.appendChild(makeEnquiryForm(
+          project,
+          "brochure-request-form",
+          "brochure-request-status",
+          "Your details are saved. Opening the brochure…",
+          () => {
+            trackMarketingEvent("brochure_request_complete", {
+              item_id: String(project.id),
+              item_name: project.title
+            });
+            window.location.assign(project.brochure);
+          },
+          "Brochure request"
+        ));
+        return content;
       });
     }
 
@@ -1414,6 +1470,19 @@ image.addEventListener("click", () => {
       "New enquiry — RG Lifespaces website",
       "Thank you — your enquiry has been submitted."
     );
+
+    // Track direct contact actions without changing their existing destinations.
+    document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+      link.addEventListener("click", () => {
+        trackMarketingEvent("phone_call_click", { link_url: link.href }, "Contact");
+      });
+    });
+
+    document.querySelectorAll('a[href*="wa.me/"]').forEach(link => {
+      link.addEventListener("click", () => {
+        trackMarketingEvent("whatsapp_click", { link_url: link.href }, "Contact");
+      });
+    });
 
     const menuToggle = document.getElementById("menuToggle");
     const mainNav = document.getElementById("mainNav");
