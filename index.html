@@ -447,6 +447,25 @@ footer {
     .rera-line { margin-top: 14px; }
 
   </style>
+  <!-- Meta Pixel: RG Lifespaces -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '901503145427695');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=901503145427695&ev=PageView&noscript=1"
+      alt="">
+  </noscript>
+  <!-- End Meta Pixel -->
 </head>
 <body>
   <div class="wrap">
@@ -980,6 +999,11 @@ card.appendChild(thumb);
 
         if (!crmResponse.ok || crmResult.success !== true) {
           throw new Error(crmResult.error || "CRM lead saving failed");
+        }
+
+        // Record a Meta conversion only after the CRM has safely saved the lead.
+        if (typeof window.fbq === "function") {
+          window.fbq("track", "Lead");
         }
 
         // CRM saved successfully; send the existing email notification as well.
