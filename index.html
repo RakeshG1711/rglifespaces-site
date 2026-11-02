@@ -844,6 +844,9 @@ The part I’m most grateful for is the paperwork. We’re first-time buyers and
       }
     ];
 
+    // CRM API is deployed in the RG Lifespaces Vercel project.
+    // FormSubmit remains enabled for email notifications.
+    const CRM_LEADS_ENDPOINT = "https://rglifespacescrm.vercel.app/api/website-lead";
     const LEADS_ENDPOINT = "https://formsubmit.co/ajax/rglifespaces@gmail.com";
     const allProjects = () => [...PROJECTS, ...UPCOMING_PROJECTS];
 
@@ -955,11 +958,11 @@ card.appendChild(thumb);
         : null;
 
       if (submitButtons) submitButtons.forEach(button => { button.disabled = true; });
-
-      if (messageElement) messageElement.textContent = "Sending your enquiry…";
+      if (messageElement) messageElement.textContent = "Saving your enquiry…";
 
       try {
-        const response = await fetch(LEADS_ENDPOINT, {
+        // Save to the CRM first. Never report success if the CRM did not save the lead.
+        const crmResponse = await fetch(CRM_LEADS_ENDPOINT, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -967,24 +970,57 @@ card.appendChild(thumb);
           },
           body: JSON.stringify({
             ...payload,
-            _subject: payload._subject || "New website enquiry — RG Lifespaces",
-            _template: "table",
-            _captcha: "false"
+            page_url: window.location.href,
+            source: "Website"
           })
         });
 
-        let result = {};
-        try { result = await response.json(); } catch (_) {}
+        let crmResult = {};
+        try { crmResult = await crmResponse.json(); } catch (_) {}
 
-        if (!response.ok || result.success === "false" || result.success === false) {
-          throw new Error("Lead submission failed");
+        if (!crmResponse.ok || crmResult.success !== true) {
+          throw new Error(crmResult.error || "CRM lead saving failed");
         }
 
-        if (messageElement) messageElement.textContent = successText;
+        // CRM saved successfully; send the existing email notification as well.
+        if (messageElement) messageElement.textContent = "Lead saved. Sending email notification…";
+
+        let emailNotificationSent = false;
+        try {
+          const emailResponse = await fetch(LEADS_ENDPOINT, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+            },
+            body: JSON.stringify({
+              ...payload,
+              _subject: payload._subject || "New website enquiry — RG Lifespaces",
+              _template: "table",
+              _captcha: "false"
+            })
+          });
+
+          let emailResult = {};
+          try { emailResult = await emailResponse.json(); } catch (_) {}
+          emailNotificationSent = emailResponse.ok &&
+            emailResult.success !== "false" &&
+            emailResult.success !== false;
+        } catch (emailError) {
+          // Do not ask the visitor to resubmit: the lead is already safely in CRM.
+          emailNotificationSent = false;
+        }
+
+        if (messageElement) {
+          messageElement.textContent = emailNotificationSent
+            ? successText
+            : "Your enquiry is saved in our CRM. Email notification could not be sent; we will still follow up.";
+        }
         return true;
       } catch (error) {
+        console.error("RG Lifespaces lead submission error:", error);
         if (messageElement) {
-          messageElement.textContent = "We could not send the form automatically. Please call or WhatsApp us directly.";
+          messageElement.textContent = "We could not save your enquiry. Please call or WhatsApp us directly.";
         }
         return false;
       } finally {
